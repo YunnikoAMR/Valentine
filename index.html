@@ -86,6 +86,7 @@
       margin-top: 15px;
       font-weight: 500;
       animation: fadeIn 1s ease;
+      text-align: left; /* mas natural basahin */
     }
 
     .heart {
@@ -119,31 +120,31 @@
     }
 
     .bouquetWrapper {
-      animation: popUp 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; /* dramatic pop */
+      animation: popUp 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
       position: relative;
     }
 
     /* Greeting message above bouquet */
-#flowerMessage {
-  position: absolute;
-  top: -60px; /* above bouquet */
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.6em;
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  opacity: 0;
-  animation: messageFade 1s ease forwards 0.3s; /* fade in slightly after page loads */
-  white-space: nowrap; /* ensures it stays in one line */
-}
+    #flowerMessage {
+      position: absolute;
+      top: -60px; 
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.6em;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      opacity: 0;
+      animation: messageFade 1s ease forwards 0.3s;
+      white-space: nowrap;
+    }
 
     @keyframes messageFade {
       to { opacity: 1; }
     }
 
     .bouquetImg {
-      width: 400px; /* bigger bouquet */
+      width: 400px; 
       opacity: 0;
       transform: scale(0.3) translateY(50px);
       animation: bloomReal 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
@@ -174,7 +175,7 @@
 
     @keyframes popUp {
       from { transform: translateY(100px) scale(0.3); opacity:0; }
-      to { transform: translateY(0) scale(1.2); opacity:1; } /* bigger pop */
+      to { transform: translateY(0) scale(1.2); opacity:1; }
     }
 
     @keyframes fadeOut {
@@ -190,17 +191,16 @@
       h1 { font-size: 1.6em; }
       .slideshow { height: 200px; }
       .bouquetImg { width: 220px; }
+      #flowerMessage { font-size: 1.2em; }
     }
   </style>
 </head>
 <body>
 
-  <!-- REALISTIC BOUQUET INTRO -->
+  <!-- BOUQUET INTRO -->
   <div id="bouquetIntro">
     <div class="bouquetWrapper">
-      <!-- Greeting Message -->
-      <div id="flowerMessage">Hello Flowers For You 🌸</div>
-      <!-- Bouquet Image -->
+      <div id="flowerMessage">Hello Flowers, For You 🌸</div>
       <img src="bouquet.png" class="bouquetImg" />
     </div>
   </div>
@@ -211,11 +211,10 @@
   </audio>
 
   <div class="container">
-    <h1>Hi Rica ❤️</h1>
+    <h1>Hi, Mahal ❤️</h1>
 
     <p>
-     	Natutuwa ako na nakilala kita at naging bahagi ka ng buhay ko. 
-Ang bawat sandali kasama ka ay nagbibigay ng saya sa akin.
+      Natutuwa ako na nakilala ka at naging espesyal sa buhay ko. Ang bawat sandali kasama ka ay nagpapasaya sa akin.
     </p>
 
     <!-- PHOTO SLIDESHOW -->
@@ -225,30 +224,26 @@ Ang bawat sandali kasama ka ay nagbibigay ng saya sa akin.
       <img class="slides" src="photo3.jpg">
     </div>
 
-    <p>
-      Sa Araw ng mga Puso, gusto ko lang sabihin na…
-    </p>
+    <p>Sa Araw ng mga Puso, gusto ko lang sabihin na…</p>
 
     <button onclick="revealMessage()">Pindutin Mo 💌</button>
 
-    <p id="hiddenMessage">
-     	Happy Valentine’s! 🌸 Sobrang thankful talaga ako na nakilala kita
-	mas naging exciting ang bawat araw ko kasi kasama kita, at kahit simpleng 
-	araw lang, special na dahil sa’yo. Pasensya na kung ganito lang muna ang 
-	maibigay ko sa’yo ngayon, medyo kapos lang, pero promise, makakabawi ako sa 
-	susunod at gagawin ko itong mas espesyal para sa’yo. Sana maging masaya ka 
-	ngayon at lagi mong tandaan, espesyal ka sa puso ko. 💌
-    </p>
+    <!-- HIDDEN MESSAGE (3 separate paragraphs for readability) -->
+    <div id="hiddenMessage">
+      <p>Happy Valentine’s! 🌸 Sobrang thankful talaga ako na nakilala kita. Mas naging exciting ang bawat araw ko kasi kasama ka, at kahit simpleng araw lang, special na dahil sa’yo.</p>
+      <p>Pasensya na kung ganito lang muna ang maibigay ko sa’yo ngayon, medyo kapos lang, pero promise, makakabawi ako sa susunod at gagawin ko itong mas espesyal para sa’yo.</p>
+      <p>Sana maging masaya ka ngayon at lagi mong tandaan, espesyal ka sa puso ko. 💌</p>
+    </div>
   </div>
 
   <script>
-    // reveal message + play music
+    // Reveal hidden message + play music
     function revealMessage() {
       document.getElementById("hiddenMessage").style.display = "block";
       document.getElementById("bgMusic").play();
     }
 
-    // slideshow auto
+    // Slideshow auto
     let slideIndex = 0;
     showSlides();
     function showSlides() {
@@ -262,7 +257,7 @@ Ang bawat sandali kasama ka ay nagbibigay ng saya sa akin.
       setTimeout(showSlides, 2500);
     }
 
-    // floating hearts
+    // Floating hearts
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -275,7 +270,7 @@ Ang bawat sandali kasama ka ay nagbibigay ng saya sa akin.
     }
     setInterval(createHeart, 350);
 
-    // create floating petals for bouquet
+    // Floating petals
     function createPetal() {
       const petal = document.createElement("div");
       petal.className = "petal";
@@ -286,7 +281,7 @@ Ang bawat sandali kasama ka ay nagbibigay ng saya sa akin.
     }
     const petalInterval = setInterval(createPetal, 150);
 
-    // remove bouquet intro + message after animation
+    // Remove bouquet intro + message after animation
     setTimeout(() => {
       clearInterval(petalInterval);
       const intro = document.getElementById("bouquetIntro");
