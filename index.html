@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Valentine's❤️</title>
+  <title>Happy Valentine's ❤️</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -123,8 +123,27 @@
       position: relative;
     }
 
+    /* Greeting message above bouquet */
+#flowerMessage {
+  position: absolute;
+  top: -60px; /* above bouquet */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.6em;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  opacity: 0;
+  animation: messageFade 1s ease forwards 0.3s; /* fade in slightly after page loads */
+  white-space: nowrap; /* ensures it stays in one line */
+}
+
+    @keyframes messageFade {
+      to { opacity: 1; }
+    }
+
     .bouquetImg {
-      width: 500px; /* bigger bouquet */
+      width: 400px; /* bigger bouquet */
       opacity: 0;
       transform: scale(0.3) translateY(50px);
       animation: bloomReal 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
@@ -179,14 +198,15 @@
   <!-- REALISTIC BOUQUET INTRO -->
   <div id="bouquetIntro">
     <div class="bouquetWrapper">
-      <!-- PALITAN MO NG PNG BOUQUET IMAGE -->
+      <!-- Greeting Message -->
+      <div id="flowerMessage">Hello Flowers For You 🌸</div>
+      <!-- Bouquet Image -->
       <img src="bouquet.png" class="bouquetImg" />
     </div>
   </div>
 
   <!-- Background Music -->
   <audio id="bgMusic" loop>
-    <!-- PALITAN MO NG SONG FILE -->
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
@@ -200,7 +220,6 @@
 
     <!-- PHOTO SLIDESHOW -->
     <div class="slideshow">
-      <!-- PALITAN MO NG MGA LARAWAN -->
       <img class="slides" src="photo1.jpg">
       <img class="slides" src="photo2.jpg">
       <img class="slides" src="photo3.jpg">
@@ -263,11 +282,11 @@
     }
     const petalInterval = setInterval(createPetal, 150);
 
-    // remove bouquet intro after animation
+    // remove bouquet intro + message after animation
     setTimeout(() => {
       clearInterval(petalInterval);
       const intro = document.getElementById("bouquetIntro");
-      if(intro) intro.style.display = "none";
+      if(intro) intro.style.display = "none"; 
     }, 5000);
   </script>
 
