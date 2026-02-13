@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Valentine's❤️</title>
+  <title>Para Sa'yo ❤️</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -106,6 +106,68 @@
       }
     }
 
+    #bouquetIntro {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(120deg,#ff6a88,#ff99ac);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease 5s forwards;
+    }
+
+    .bouquetWrapper {
+      animation: popUp 1.3s ease forwards;
+      position: relative;
+    }
+
+    .bouquetImg {
+      width: 180px;
+      opacity: 0;
+      transform: scale(0.5) translateY(40px);
+      animation: bloomReal 1.5s ease forwards;
+    }
+
+    .petal {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle at 30% 30%, #ffb6c1, #ff2e63);
+      border-radius: 50%;
+      opacity: 0;
+      animation: petalFloat 3s ease forwards;
+    }
+
+    @keyframes bloomReal {
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @keyframes petalFloat {
+      0% { transform: translateY(20px) scale(0.3); opacity:0; }
+      40% { opacity:1; }
+      100% { transform: translateY(-120px) scale(1); opacity:0; }
+    }
+
+    @keyframes popUp {
+      from { transform: translateY(80px) scale(0.6); opacity:0; }
+      to { transform: translateY(0) scale(1); opacity:1; }
+    }
+
+    @keyframes fadeOut {
+      to { opacity:0; visibility:hidden; }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px);} 
       to { opacity: 1; transform: translateY(0);} 
@@ -118,6 +180,22 @@
   </style>
 </head>
 <body>
+
+  <!-- REALISTIC BOUQUET INTRO -->
+  <div id="bouquetIntro">
+    <div class="bouquetWrapper">
+      <!-- PALITAN MO NG PNG BOUQUET IMAGE -->
+      <img src="bouquet.png" class="bouquetImg" />
+    </div>
+  </div>
+      <div class="flower f1">🌹</div>
+      <div class="flower f2">🌹</div>
+      <div class="flower f3">🌹</div>
+      <div class="flower f4">🌹</div>
+      <div class="flower f5">🌹</div>
+      <div class="wrap"></div>
+    </div>
+  </div>
 
   <!-- Background Music -->
   <audio id="bgMusic" loop>
@@ -188,6 +266,34 @@
     }
 
     setInterval(createHeart, 350);
+
+    // remove bouquet intro after animation
+    // create floating petals for realistic effect
+    function createPetal() {
+      const petal = document.createElement("div");
+      petal.className = "petal";
+      petal.style.left = Math.random()*100 + "vw";
+      petal.style.top = "55vh";
+      document.getElementById("bouquetIntro").appendChild(petal);
+      setTimeout(()=>petal.remove(),3000);
+    }
+
+    const petalInterval = setInterval(createPetal, 180);
+
+    setTimeout(() => {
+      clearInterval(petalInterval);
+      const intro = document.getElementById("bouquetIntro");
+      if(intro) intro.style.display = "none";
+    }, 5500);
+    }
+
+    const flowerInterval = setInterval(createFlower, 200);
+
+    // stop flowers after 5 seconds
+    setTimeout(() => {
+      clearInterval(flowerInterval);
+      document.getElementById("flowerIntro").remove();
+    }, 5000);
   </script>
 
 </body>
